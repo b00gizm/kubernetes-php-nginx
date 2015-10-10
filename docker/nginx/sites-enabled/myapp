@@ -1,0 +1,14 @@
+server {
+	root /app;
+
+	location / {
+		try_files $uri /index.php$is_args$args;
+	}
+
+	location ~ \.php$ {
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass php-fpm-svc:9000;
+		fastcgi_index index.php;
+		include fastcgi_params;
+    }
+}

@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-fpm-svc
+  labels:
+    app: php-fpm
+spec:
+  ports:
+  - port: 9000
+    prototcol: TCP
+  selector:
+    app: php-fpm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-nginx-svc
+  labels:
+    app: php-nginx
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 80
+    prototcol: TCP
+  selector:
+    app: php-nginx
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: php-fpm
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: php-fpm
+    spec:
+      containers:
+      - name: php-fpm
+        image: 'b00gizm/php-nginx:latest'
+        imagePullPolicy: Always
+        command: ['php5-fpm', '--nodaemonize']
+        ports:
+        - containerPort: 9000
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: php-nginx
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: php-nginx
+    spec:
+      containers:
+      - name: php-nginx
+        image: 'b00gizm/php-nginx:latest'
+        imagePullPolicy: Always
+        command:
+        - nginx
+        ports:
+        - containerPort: 80
