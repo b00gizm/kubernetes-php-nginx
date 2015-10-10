@@ -43,7 +43,7 @@ php-fpm-fyonz     1/1       Running   0          12s
 php-nginx-eew3w   1/1       Running   0          12s
 ```
 
-And then hit the URL dumped by `kube-up.sh` above in your browser (__please note that your actual IP address and port might an will vary!__) and you'll be greeted by a "Hello World" page.
+And then hit the URL dumped by `kube-up.sh` above in your browser (__please note that your actual IP address and port might and will vary!__) and you'll be greeted by a "Hello World" page.
 
 After you're done, you can bring everything down via `kubernetes/kube-down.sh`.
 
