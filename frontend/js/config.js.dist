@@ -1,0 +1,4 @@
+var CONFIG = {
+    apiHost: "%api_host%",
+    apiPort: "%api_port%"
+};

@@ -15,7 +15,7 @@ ADD ./docker/php-fpm/pool.d/ /etc/php5/fpm/pool.d
 RUN mkdir -p /etc/php5/cli; ln -s /etc/php5/fpm/php.ini /etc/php5/cli/php.ini
 RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Berlin/" /etc/php5/fpm/php.ini
 
-ADD app/ /app
+ADD . /app
 
 EXPOSE 80 9000
 

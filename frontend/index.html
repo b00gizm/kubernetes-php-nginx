@@ -1,0 +1,34 @@
+<html ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Awesome Todos</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body ng-controller="TodoListCtrl">
+
+<div class="container">
+    <h1>Super Awesome Todos</h1>
+
+    <form novalidat class="form-inline">
+        <div class="form-group">
+            <label for="todo-title">What needs to be done?</label>
+            <input type="text" class="form-control" id="todo-title" placeholder="Add your todo..." ng-model="newTodo.title">
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="save(newTodo)">Save</button>
+    </form>
+
+    <ul class="todo-list">
+        <li ng-repeat="todo in todos">
+            <input type="checkbox" id="todo_{{ todo.id }}" ng-model="todo.done" ng-true-value="1" ng-false-value="0" ng-change="update(todo.id)">
+            <label for="todo_{{ todo.id }}">{{ todo.title }}</label>
+        </li>
+    </ul>
+</div>
+
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

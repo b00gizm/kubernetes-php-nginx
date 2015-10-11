@@ -1,0 +1,3 @@
+frontend/js/config.js
+php-api/vendor/*
+!.gitkeep
