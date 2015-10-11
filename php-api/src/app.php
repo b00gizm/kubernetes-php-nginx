@@ -11,6 +11,10 @@ $app->register(new JDesrosiers\Silex\Provider\CorsServiceProvider(), [
 $app['redis.prefix'] = 'todos:';
 $app['redis.client'] = new Predis\Client('tcp://redis:6379');
 
+$app->get('/', function() use ($app) {
+    return $app->json(['info' => 'Welcome to the todos PHP API v2']);
+});
+
 $app->get('/api/todos', function() use ($app) {
     /** @var Predis\Client $client */
     $client = $app['redis.client'];

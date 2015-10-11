@@ -1,3 +1,4 @@
-frontend/js/config.js
+frontend/node_modules/*
+frontend/public/js/config.js
 php-api/vendor/*
 !.gitkeep

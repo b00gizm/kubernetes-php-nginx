@@ -18,7 +18,7 @@ docker run \
 docker run \
     -d \
     --name="b00gizm-php-nginx" \
-    --link="b00gizm-php-api":"php-api" \
+    --link="b00gizm-php-api":"php-fpm" \
     -p 8081:80 \
     -v ${DIR}/../php-api:/app \
     b00gizm/php-api:latest \
@@ -28,11 +28,8 @@ docker run \
     -d \
     --name="b00gizm-frontend" \
     --link="b00gizm-php-api":"todo-api" \
-    -p 8080:80 \
+    -v ${DIR}/../frontend:/app \
     -e API_HOST=$(docker-machine ip dev) \
     -e API_PORT=8081 \
-    -v ${DIR}/../frontend/docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
-    -v ${DIR}/../frontend:/usr/share/nginx/html \
-    -v ${DIR}/../frontend/start.sh:/usr/bin/start.sh:ro \
-    nginx:1.9 \
-    start.sh
+    -p 8080:3000 \
+    b00gizm/frontend:latest \

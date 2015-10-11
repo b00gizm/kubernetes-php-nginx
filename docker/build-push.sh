@@ -2,6 +2,13 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-docker build -t b00gizm/${1} ${DIR}/../${1}
-docker tag -f b00gizm/${1} latest
-#docker push b00gizm/php-nginx:latest
+image=$1;
+
+if [[ -z image ]]
+then
+    echo "You need to specify the image to build and push"
+    exit
+fi
+
+docker build -t b00gizm/${image} ${DIR}/../${image}
+docker push b00gizm/${image}:latest

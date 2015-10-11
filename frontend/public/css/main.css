@@ -1,0 +1,13 @@
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    padding: 40px;
+    background-color: #424B54;
+    color: #fff;
+}
+
+ul.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
