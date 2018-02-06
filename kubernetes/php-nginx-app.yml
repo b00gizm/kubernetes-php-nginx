@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
   - port: 9000
-    prototcol: TCP
+    protocol: TCP
   selector:
     app: php-fpm
 ---
@@ -22,7 +22,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 80
-    prototcol: TCP
+    protocol: TCP
   selector:
     app: php-nginx
 ---
